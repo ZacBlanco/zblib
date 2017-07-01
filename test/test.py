@@ -16,8 +16,7 @@ if __name__ == "__main__":
                     if '#include' in line and '../src' in line and '.h"'  in line:
                         ef = '../' + line[line.index('/')+1:].replace('"', '').replace('.h', '.c')
                         extra_files.append(ef.strip())
-            # print(' '.join(['gcc', mypath + '/' + f, 'test.c'] + extra_files))
-            p = subprocess.Popen(['gcc', mypath + '/' + f, 'test.c'] +extra_files,
+            p = subprocess.Popen(['gcc', mypath + '/' + f, 'test.c'] + extra_files,
                                  cwd='./test/')
             p.wait()
             if p.returncode == 0:
